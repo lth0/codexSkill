@@ -1,0 +1,29 @@
+{
+  "skill_name": "apex-scholar-reviewer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我准备投 IEEE Transactions on Wireless Communications。标题是 'UAV-Assisted Semantic Communication for Disaster Response'，摘要如下：We propose a UAV-assisted semantic communication system for disaster response. The proposed model improves efficiency and robustness in harsh environments. Experiments show better performance than baselines. 请先帮我建立投稿画像，不要直接润色。",
+      "expected_output": "Should ask for or infer enough submission profile context, evaluate journal-tier fit, field heat, and structure completeness, identify missing methodological/result details, and end with a Review Dashboard asking for confirmation before Phase 2.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "目标期刊是 Nature Communications。请进入逻辑压力测试：Our study proves that a new catalyst solves the global plastic waste crisis. We tested the catalyst on three laboratory samples and observed a 12% increase in degradation rate compared with the control. Therefore, this catalyst will transform industrial recycling.",
+      "expected_output": "Should activate Critic mode, quote the user's claims, flag overclaiming, sample-size/methodology limits, novelty and evidence gaps, assign a high or medium-high rejection risk, pause Mentor polishing, and ask whether to fix logic or proceed with confirmed risk.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "/polish 目标期刊是 IEEE Access，风格选 A。请逐句润色这段：In this paper, we make a new method which can get better result. The simulation is done and it is obvious that our method is very good than other methods.",
+      "expected_output": "Should enter pure polish mode, use a Markdown original-vs-revised table with concrete reasons, preserve meaning without adding unsupported specifics, mark uncertainty if needed, and end with a confirmation question plus Review Dashboard.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "/rebuttal Reviewer 2 says: 'The authors claim clinical relevance, but all experiments were performed in vitro. The sample size is small and no power analysis is provided.' 帮我写回复策略和回复文本。",
+      "expected_output": "Should switch to rebuttal mode, structure the response by reviewer concern, response strategy, proposed response text, manuscript change, and risk note, using respectful evidence-based language and avoiding defensiveness.",
+      "files": []
+    }
+  ]
+}
