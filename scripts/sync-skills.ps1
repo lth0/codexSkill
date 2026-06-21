@@ -69,6 +69,29 @@ function Test-ExcludedFile {
     return $ExcludedFileExtensions -contains $File.Extension.ToLowerInvariant()
 }
 
+function Test-SameFileContent {
+    param(
+        [string]$SourcePath,
+        [string]$DestinationPath
+    )
+
+    if (-not (Test-Path -LiteralPath $DestinationPath)) {
+        return $false
+    }
+
+    $sourceItem = Get-Item -LiteralPath $SourcePath
+    $destinationItem = Get-Item -LiteralPath $DestinationPath
+
+    if ($sourceItem.Length -ne $destinationItem.Length) {
+        return $false
+    }
+
+    $sourceHash = (Get-FileHash -LiteralPath $SourcePath -Algorithm SHA256).Hash
+    $destinationHash = (Get-FileHash -LiteralPath $DestinationPath -Algorithm SHA256).Hash
+
+    return $sourceHash -eq $destinationHash
+}
+
 function Get-ResolvedDirectoryPath {
     param([System.IO.DirectoryInfo]$Directory)
 
@@ -117,7 +140,11 @@ function Copy-DirectoryContents {
         }
 
         $targetPath = Join-Path $Destination $item.Name
-        Copy-Item -LiteralPath $item.FullName -Destination $targetPath -Force
+        if (Test-SameFileContent -SourcePath $item.FullName -DestinationPath $targetPath) {
+            continue
+        }
+
+        [System.IO.File]::Copy($item.FullName, $targetPath, $true)
     }
 
     $Visited.Remove($visitedKey)
