@@ -9,17 +9,20 @@ $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $RepoRoot = Split-Path -Parent $ScriptDir
 $SkillsRoot = Join-Path $RepoRoot "skills"
 $GitSafeDir = $RepoRoot.Replace("\", "/")
+$UserProfileRoot = $env:USERPROFILE
 
 $Sources = @(
     [pscustomobject]@{
         Name = "codex"
-        Root = "C:\Users\User\.codex\skills"
+        Root = Join-Path $UserProfileRoot ".codex\skills"
+        DisplayRoot = "C:\Users\User\.codex\skills"
         RepoSubdir = "codex"
         Label = "Codex local skills"
     },
     [pscustomobject]@{
         Name = "agents"
-        Root = "C:\Users\User\.agents\skills"
+        Root = Join-Path $UserProfileRoot ".agents\skills"
+        DisplayRoot = "C:\Users\User\.agents\skills"
         RepoSubdir = "agents"
         Label = "Agents local skills"
     }
@@ -264,7 +267,7 @@ function Get-SkillRecords {
             $skillDirectory = Split-Path -Parent $skillFile.FullName
             $relativeSkillDirectory = Get-RelativePath -BasePath $destinationRoot -FullPath $skillDirectory
             $repoDirectory = ("skills/" + $source.RepoSubdir + "/" + $relativeSkillDirectory).Replace("\", "/").TrimEnd("/")
-            $sourceDirectory = Join-Path $source.Root $relativeSkillDirectory
+            $sourceDirectory = Join-Path $source.DisplayRoot $relativeSkillDirectory
             $name = Get-FrontMatterValue -Path $skillFile.FullName -Key "name"
             $description = Get-FrontMatterValue -Path $skillFile.FullName -Key "description"
 
