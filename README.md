@@ -10,6 +10,19 @@ This repository synchronizes the locally installed Codex/Agents skills on this m
 4. The sync script only adds or overwrites files. It does not automatically delete stale files that disappeared from the source directories.
 5. `research-writing-skill`, `office-academic-skill`, and `scientific-toolkit-skill` are imported from [zLanqing/codex-claude-academic-skills](https://github.com/zLanqing/codex-claude-academic-skills/tree/7ed6377f0efb6a38951b48ef03b19d996e454b1f). Each package retains the upstream MIT license and its bundled reference resources.
 
+## ARS-Codex Marketplace
+
+`academic-research-suite` is backed up from the installed **ARS-Codex v3.23.0** plugin. Its upstream source is [Imbad0202/academic-research-skills-codex](https://github.com/Imbad0202/academic-research-skills-codex/tree/52228e8280dd1770e18ecfc3b1fdf16b13b58104). The complete workflow resources, attribution notices, and **CC BY-NC 4.0** license are retained in `skills/codex/academic-research-suite/`.
+
+Install through the original Marketplace:
+
+```powershell
+codex plugin marketplace add Imbad0202/academic-research-skills-codex --ref main
+codex plugin add ars-codex@ars-codex
+```
+
+Open a new Codex conversation and invoke `$academic-research-suite`. This is one suite entrypoint covering research, paper writing, review, study screening, pipelines, and experiments. Existing separately installed academic skills remain independent.
+
 ## Manual Sync
 
 ```powershell
@@ -26,6 +39,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-skills.ps1 -NoC
 
 | Skill | Source | Repository directory | Local directory | Usage notes |
 | --- | --- | --- | --- | --- |
+| `academic-research-suite` | `codex plugin: ars-codex` | `skills/codex/academic-research-suite` | `C:\Users\User\.codex\plugins\cache\ars-codex\ars-codex\3.23.0\skills\academic-research-suite` | ARS-Codex v3.23.0: unified research, writing, manuscript review, systematic-review screening, research pipelines, experiments, citation integrity, and ars-* aliases. Includes complete workflow resources; licensed CC BY-NC 4.0. |
 | `office-academic-skill` | `codex` | `skills/codex/office-academic-skill` | `C:\Users\User\.codex\skills\office-academic-skill` | Chinese-first academic Word and PowerPoint workflow for paper reading reports, thesis or group-meeting PPTs, editable DOCX/PPTX generation, Office file inspection, template matching, speaker notes, and layout quality checks. Use when the user asks to read papers into Word reports, create or polish PPT/PPTX, convert paper/thesis materials into slides, edit DOCX/PPTX, inspect Office files, or produce Chinese academic presentation/report deliverables. Preserve English paper titles, formulas, variable names, software commands, and references. |
 | `research-writing-skill` | `codex` | `skills/codex/research-writing-skill` | `C:\Users\User\.codex\skills\research-writing-skill` | Chinese-first research paper writing, revision, polishing, section drafting, rebuttal, peer-review response, thesis prose improvement, and manuscript argument planning. Use when the user asks to write or revise论文正文, abstracts, introductions, methods, results, discussion, conclusions, related work, responses to reviewers, LaTeX/Overleaf text, or academic prose. Preserve formulas, English paper titles, terms, citations, and measured results. |
 | `scientific-toolkit-skill` | `codex` | `skills/codex/scientific-toolkit-skill` | `C:\Users\User\.codex\skills\scientific-toolkit-skill` | Research computing toolkit for optoelectronic information science and engineering, MATLAB/Octave, Python scientific analysis, signal processing, image processing, statistics, simulation, optimization, publication figures, sensor/time-series data, citation lookup, and common scientific libraries. Use when the user asks for MATLAB code, scientific Python, data analysis, plots, simulations, formulas, statistics, machine learning, optical/physical/materials computation, or reproducible research workflows. |
