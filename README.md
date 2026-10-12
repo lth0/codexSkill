@@ -23,6 +23,17 @@ codex plugin add ars-codex@ars-codex
 
 Open a new Codex conversation and invoke `$academic-research-suite`. This is one suite entrypoint covering research, paper writing, review, study screening, pipelines, and experiments. Existing separately installed academic skills remain independent.
 
+## Anti-Defensive Writing Marketplace
+
+The Chinese `anti-defensive-writing` and English `anti-defensive-writing-en` skills are backed up from **Anti-Defensive Writing v1.0.0**, installed through the `adkid-zephyr-writing` Marketplace. Upstream: [Adkid-Zephyr/anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill/tree/82d31402caa0db1790026824399044538483171b). Both skill directories retain the MIT license and author attribution.
+
+```powershell
+codex plugin marketplace add Adkid-Zephyr/anti-defensive-writing-Skill
+codex plugin add anti-defensive-writing@adkid-zephyr-writing
+```
+
+Open a new Codex conversation and invoke `$anti-defensive-writing` for Chinese or `$anti-defensive-writing-en` for English.
+
 ## Manual Sync
 
 ```powershell
@@ -39,6 +50,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-skills.ps1 -NoC
 
 | Skill | Source | Repository directory | Local directory | Usage notes |
 | --- | --- | --- | --- | --- |
+| `anti-defensive-writing` | `codex plugin: anti-defensive-writing` | `skills/codex/anti-defensive-writing` | `C:\Users\User\.codex\plugins\cache\adkid-zephyr-writing\anti-defensive-writing\1.0.0\skills\anti-defensive-writing` | 中文学术写作技能：围绕证据支持的核心贡献组织论文、修改摘要与引言、压缩篇幅、组织实验与回复审稿意见，减少防御性表述。MIT license. |
+| `anti-defensive-writing-en` | `codex plugin: anti-defensive-writing` | `skills/codex/anti-defensive-writing-en` | `C:\Users\User\.codex\plugins\cache\adkid-zephyr-writing\anti-defensive-writing\1.0.0\skills\anti-defensive-writing-en` | English academic-writing skill for contribution-focused narratives, abstracts, introductions, conclusions, manuscript shortening, experiment organization, and rebuttals. MIT license. |
 | `academic-research-suite` | `codex plugin: ars-codex` | `skills/codex/academic-research-suite` | `C:\Users\User\.codex\plugins\cache\ars-codex\ars-codex\3.23.0\skills\academic-research-suite` | ARS-Codex v3.23.0: unified research, writing, manuscript review, systematic-review screening, research pipelines, experiments, citation integrity, and ars-* aliases. Includes complete workflow resources; licensed CC BY-NC 4.0. |
 | `office-academic-skill` | `codex` | `skills/codex/office-academic-skill` | `C:\Users\User\.codex\skills\office-academic-skill` | Chinese-first academic Word and PowerPoint workflow for paper reading reports, thesis or group-meeting PPTs, editable DOCX/PPTX generation, Office file inspection, template matching, speaker notes, and layout quality checks. Use when the user asks to read papers into Word reports, create or polish PPT/PPTX, convert paper/thesis materials into slides, edit DOCX/PPTX, inspect Office files, or produce Chinese academic presentation/report deliverables. Preserve English paper titles, formulas, variable names, software commands, and references. |
 | `research-writing-skill` | `codex` | `skills/codex/research-writing-skill` | `C:\Users\User\.codex\skills\research-writing-skill` | Chinese-first research paper writing, revision, polishing, section drafting, rebuttal, peer-review response, thesis prose improvement, and manuscript argument planning. Use when the user asks to write or revise论文正文, abstracts, introductions, methods, results, discussion, conclusions, related work, responses to reviewers, LaTeX/Overleaf text, or academic prose. Preserve formulas, English paper titles, terms, citations, and measured results. |
